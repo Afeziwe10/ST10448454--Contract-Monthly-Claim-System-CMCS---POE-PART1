@@ -1,0 +1,42 @@
+﻿using MaterialDesignThemes.Wpf;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
+
+namespace CMCS.Pages
+{
+    /// <summary>
+    /// Interaction logic for LecturerDashboard.xaml
+    /// </summary>
+    public partial class LecturerDashboard : Window
+    {
+        public LecturerDashboard()
+        {
+            InitializeComponent();
+        }
+
+        private void Submit (object sender, RoutedEventArgs e)
+        {
+           SubmitClaimPage submitClaimPage = new SubmitClaimPage();
+            submitClaimPage.Show();
+        
+        }
+
+        private void ViewClaim_Click (object sender, RoutedEventArgs e)
+        {
+            ViewClaimPage vp = new ViewClaimPage();
+            vp.Show();
+            this.Close();
+        }
+    }
+}
