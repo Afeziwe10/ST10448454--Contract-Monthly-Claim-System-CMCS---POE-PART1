@@ -19,23 +19,54 @@ namespace CMCS.Pages
     /// </summary>
     public partial class ManagerDashboard : Window
     {
-        public ManagerDashboard()
+        private readonly int _currentUserId;
+        public ManagerDashboard(int userId)
         {
             InitializeComponent();
+            _currentUserId = userId;
         }
 
         private void VerifyReport_Click (object sender, RoutedEventArgs e)
         {
             VerifyReportPage Vrp = new VerifyReportPage();
             Vrp.Show();
-            this.Close();
+            
         }
 
         private void SystemOverview_Click (object sender, RoutedEventArgs e)
         {
             SystemOverviewPage Sop = new SystemOverviewPage();
             Sop.Show();
-            this.Close();
+            
+        }
+
+        private void Logout_Click(object sender, RoutedEventArgs e)
+        {
+            //Show confirmation Dialog
+            //new CMCS.Dialogs.SuccessDialog("Please fill in module details.").ShowDialog();
+            var confirmDialog = new CMCS.Dialogs.ConfirmDialog("Are you sure you want to logout");
+            confirmDialog.ShowDialog();
+
+            if (confirmDialog.IsConfirmed)
+            {
+                var successDialog = new CMCS.Dialogs.SuccessDialog("You have been logged out successfully");
+                successDialog.ShowDialog();
+
+
+                var MainWindow = new MainWindow();
+                MainWindow.Show();
+                this.Close();
+            }
+            else
+            {
+
+            }
+        }
+
+        private void BtnMessages_Clicks(object sender, RoutedEventArgs e)
+        {
+            MessagesContactPage messagesContactPage = new MessagesContactPage(_currentUserId, "Manager");
+            messagesContactPage.Show();
         }
     }
 }

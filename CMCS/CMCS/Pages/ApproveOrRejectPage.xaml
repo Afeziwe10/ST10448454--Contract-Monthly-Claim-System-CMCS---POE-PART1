@@ -14,21 +14,23 @@
         <DataGrid x:Name="ProcessedClaimsGrid" AutoGenerateColumns="False" Margin="40,100,40,40" RowHeight="50" IsReadOnly="True" AlternatingRowBackground="{StaticResource Brush.Accent}" BorderBrush="{StaticResource Brush.Primary}" BorderThickness="2">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Claim ID" Binding="{Binding ClaimId}" Width="80"/>
-                <DataGridTextColumn Header="Module" Binding="{Binding ModuleName}" Width="*"/>
+                <DataGridTextColumn Header="Lecture" Binding="{Binding LectureName}" Width="*"/>
+                <DataGridTextColumn Header="Module Name" Binding="{Binding ModuleName}" Width="*"/>
+                <DataGridTextColumn Header="Module Code" Binding="{Binding ModuleCode}" Width="80"/>
                 <DataGridTextColumn Header="Hours" Binding="{Binding HoursWorked}" Width="80"/>
                 <DataGridTextColumn Header="Total" Binding="{Binding TotalAmount}" Width="100"/>
 
                 <DataGridTemplateColumn Header="Status" Width="120">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding Status}" FontWeight="Bold" HorizontalAlignment="Center">
+                            <TextBlock Text="{Binding status}" FontWeight="Bold" HorizontalAlignment="Center">
                                 <TextBlock.Style>
                                     <Style TargetType="TextBlock">
                                         <Style.Triggers>
-                                            <DataTrigger Binding="{Binding Status}" Value="Approved">
+                                            <DataTrigger Binding="{Binding status}" Value="Approved">
                                                 <Setter Property="Foreground" Value="Green"/>
                                             </DataTrigger>
-                                            <DataTrigger Binding="{Binding Status}" Value="Rejected">
+                                            <DataTrigger Binding="{Binding status}" Value="Rejected">
                                                 <Setter Property="Foreground" Value="Red"/>
                                             </DataTrigger>
                                         </Style.Triggers>

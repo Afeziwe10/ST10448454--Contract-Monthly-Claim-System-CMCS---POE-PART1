@@ -13,18 +13,20 @@
 
         <DataGrid x:Name="ClaimsGrid" AutoGenerateColumns="False" Margin="40,100,40,40" RowHeight="80" IsReadOnly="True" CanUserResizeRows="False" AlternatingRowBackground="{StaticResource Brush.Accent}" BorderThickness="1">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Claim ID" Binding="{Binding CliamId}" Width="80"/>
-                <DataGridTextColumn Header="Module" Binding="{Binding ModuleName}" Width="*"/>
+                <DataGridTextColumn Header="Claim ID" Binding="{Binding ClaimId}" Width="80"/>
+                <DataGridTextColumn Header="Lecture" Binding="{Binding LectureName}" Width="*"/>
+                <DataGridTextColumn Header="Module Name" Binding="{Binding ModuleName}" Width="*"/>
+                <DataGridTextColumn Header="Module Code" Binding="{Binding ModuleCode}" Width="80"/>
                 <DataGridTextColumn Header="Hours" Binding="{Binding HoursWorked}" Width="80"/>
                 <DataGridTextColumn Header="Total (R)" Binding="{Binding TotalAmount}" Width="100"/>
-                <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="120"/>
+                <DataGridTextColumn Header="Status" Binding="{Binding status}" Width="120"/>
 
                 <DataGridTemplateColumn Header="Action" Width="220">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                <Button Style="{StaticResource PrimaryButton}" Content="Approved" Width="90" Height="30" Margin="0,0,10,0"/>
-                                <Button Style="{StaticResource DestructiveButton}" Content="Reject" Width="90" Height="30"/>
+                                <Button Style="{StaticResource PrimaryButton}" Content="Approved" Click="Approve_Click" Width="90" Height="30" Margin="0,0,10,0"/>
+                                <Button Style="{StaticResource DestructiveButton}" Content="Reject" Click="Reject_Click" Width="90" Height="30"/>
                             </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>

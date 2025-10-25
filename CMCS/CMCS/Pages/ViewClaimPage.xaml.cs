@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using CMCS.Data;
 
 namespace CMCS.Pages
 {
@@ -22,6 +23,38 @@ namespace CMCS.Pages
         public ViewClaimPage()
         {
             InitializeComponent();
+            LoadClaims();
+        }
+
+        private void LoadClaims()
+        {
+            try
+            {
+                using (var db = new ApplicationDbContext())
+                {
+                    int currentUserId = 1;
+
+                    var claims = db.Claims.Where(c => c.UserId == currentUserId).Select(c => new
+                    {
+                        c.ClaimId,
+                        c.ModuleName,
+                        c.ModuleCode,
+                        c.HoursWorked,
+                        c.HourlyRate,
+                        c.TotalAmount,
+                        c.status,
+                        c.DateSubmitted,
+                    })
+                        .ToList();
+
+                    ClaimsGrid.ItemsSource = claims;
+                  
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading claims: " + ex.Message);
+            }
         }
     }
 }

@@ -17,52 +17,55 @@
         <StackPanel Margin="60,100,60,40" VerticalAlignment="Top">
             <StackPanel Margin="0,0,0,15">
                 <TextBlock Text="Module Name: " FontWeight="Black" Foreground="{StaticResource Brush.Primary}" Margin="0,0,0,6"/>
-                <TextBox Height="40" Style="{StaticResource Input}"/>
+                <TextBox x:Name="txtModule" Height="40" Style="{StaticResource Input}"/>
             </StackPanel>
             
             <StackPanel Margin="0,0,0,15">
                 <TextBlock Text="Module Code: " FontWeight="Bold" Foreground="{StaticResource Brush.Primary}" Margin="0,0,0,6"/>
-                <TextBox Height="40" Style="{StaticResource Input}"/>
+                <TextBox x:Name="txtCode" Height="40" Style="{StaticResource Input}"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="0,0,0,15">
                 <StackPanel Width="200">
                     <TextBlock Text="Start Date: " FontWeight="Bold" Foreground="{StaticResource Brush.Primary}" Margin="0,0,0,6"/>
-                    <DatePicker Height="40"/>
+                    <DatePicker x:Name="dpStart"  Height="40"/>
                 </StackPanel>
                 
                 <StackPanel Width="200">
                     <TextBlock Text="End Date: " FontWeight="Bold" Foreground="{StaticResource Brush.Primary}" Margin="0,0,0,6"/>
-                    <DatePicker Height="40"/>
+                    <DatePicker x:Name="dpEnd" Height="40"/>
                 </StackPanel>
             </StackPanel>
             
             <StackPanel Margin="0,0,0,15">
                 <TextBlock Text="Hours Worked: " FontWeight="Bold" Foreground="{StaticResource Brush.Primary}" Margin="0,0,0,6"/>
-                <TextBox Height="40" Style="{StaticResource Input}"/>
+                <TextBox x:Name="txtHours" Height="40" Style="{StaticResource Input}"/>
             </StackPanel>
 
             <StackPanel Margin="0,0,0,15">
                 <TextBlock Text="Hourly Rate (R): " FontWeight="Bold" Foreground="{StaticResource Brush.Primary}" Margin="0,0,0,6"/>
-                <TextBox Height="40" Style="{StaticResource Input}"/>
+                <TextBox x:Name="txtRate" Height="40" Style="{StaticResource Input}"/>
             </StackPanel>
 
             <StackPanel Margin="0,0,0,15">
                 <TextBlock Text="Description/Notes: " FontWeight="Bold" Foreground="{StaticResource Brush.Primary}" Margin="0,0,0,6"/>
-                <TextBox Height="80" AcceptsReturn="True" TextWrapping="Wrap" Style="{StaticResource Input}"/>
+                <TextBox x:Name="txtNotes" Height="80" AcceptsReturn="True" TextWrapping="Wrap" Style="{StaticResource Input}"/>
             </StackPanel>
 
             <StackPanel Margin="0,0,0,15">
                 <TextBlock Text="Upload Supporting Document: " FontWeight="Bold" Foreground="{StaticResource Brush.Primary}" Margin="0,0,0,6"/>
-                <Button Style="{StaticResource SecondaryButton}" Height="45">
+                <DockPanel>
+                <Button x:Name="btnUpload" Style="{StaticResource SecondaryButton}" Height="45" Click="BtnUpload_Click">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <materialDesign:PackIcon Kind="FileUpload" Width="22" Height="22" Foreground="White" Margin="0,0,8,0"/>
                         <TextBlock Text="Upload File" Foreground="White" FontSize="16" FontWeight="Bold"/>
                     </StackPanel>
                 </Button>
+                        <TextBlock x:Name="txtFileName" VerticalAlignment="Center" Margin="12, 0, 0, 0" Foreground="{StaticResource Brush.Primary}"/>
+                    </DockPanel>
             </StackPanel>
 
-            <Button Style="{StaticResource PrimaryButton}" Height="55" Margin="0,20,0,0">
+            <Button x:Name="btnSubmit" Style="{StaticResource PrimaryButton}" Height="55" Margin="0,20,0,0" Click="BtnSubmit_Click">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <materialDesign:PackIcon Kind="CheckCircle" Width="26" Height="26" Foreground="White" Margin="0,0,8,0"/>
                     <TextBlock Text="Submit Claim" Foreground="White" FontSize="18" FontWeight="Bold"/>
